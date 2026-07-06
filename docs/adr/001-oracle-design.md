@@ -1,4 +1,4 @@
-# ADR 001: Build a custom weather oracle, following SEP-40-style conventions
+# ADR 001: Build a custom weather oracle, following SEP-40-style convention
 
 ## Status
 Accepted
