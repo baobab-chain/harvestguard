@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HarvestGuard — Insurance that pays out on its own</title>
+<meta name="description" content="Parametric crop micro-insurance on Soroban. Rainfall crosses a threshold, payout happens automatically — no claims adjuster needed." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="brand">HarvestGuard</span>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#why-stellar">Why Stellar</a>
+      <a href="https://github.com/baobab-labs/harvestguard" class="cta-ghost">View on GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Baobab Labs · Stellar Wave</p>
+      <h1>No claim.<br>No adjuster.<br>Just a threshold.</h1>
+      <p class="lede">
+        A $200 policy on 200kg of maize isn't worth a claims
+        investigator's time. HarvestGuard doesn't need one — rainfall
+        drops below the threshold, the contract pays out automatically,
+        in seconds.
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/baobab-labs/harvestguard" class="cta-primary">Read the protocol</a>
+        <a href="#how" class="cta-text">See how a payout fires ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg id="gauge-diagram" viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg">
+        <rect x="70" y="20" width="80" height="240" rx="16" class="gauge-tube"/>
+        <line x1="55" y1="140" x2="70" y2="140" class="threshold-tick"/>
+        <line x1="150" y1="140" x2="165" y2="140" class="threshold-tick"/>
+        <line x1="70" y1="140" x2="150" y2="140" class="threshold-line"/>
+        <text x="40" y="145" class="threshold-label" text-anchor="end">20mm</text>
+
+        <rect x="74" y="60" width="72" height="196" rx="12" class="gauge-fill" id="gauge-fill"/>
+
+        <g id="trigger-flash">
+          <circle cx="110" cy="140" r="70" class="trigger-ring"/>
+          <text x="110" y="146" class="trigger-text">PAYOUT</text>
+        </g>
+      </svg>
+      <p class="visual-caption">Kaduna · 5mm recorded · policy triggered</p>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="wrap">
+      <p class="eyebrow">The mechanism</p>
+      <h2>Two contracts: one watches the sky, one holds the money</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <div>
+            <h3>Weather providers report rainfall</h3>
+            <p>Multiple independent providers submit readings for a location. The oracle returns the median — no single source controls the outcome.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <div>
+            <h3>Farmer buys a policy</h3>
+            <p>Pick a location, a rainfall threshold, and an expiry date. Pay a small premium into the shared pool.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <div>
+            <h3>Anyone can check the trigger</h3>
+            <p>The condition is public and objective, so it doesn't need to be the farmer, the insurer, or an admin who calls it — anyone can fire a legitimate payout.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">04</span>
+          <div>
+            <h3>Payout settles automatically</h3>
+            <p>If rainfall crossed the threshold, funds move from the pool to the farmer immediately. No investigation, no paperwork.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="why-stellar" class="section section-alt">
+    <div class="wrap two-col">
+      <div>
+        <p class="eyebrow">Why not Reflector, Stellar's existing oracle</p>
+        <h2>Because rainfall isn't<br>an asset price</h2>
+        <p class="lede-small">
+          We checked. Reflector is excellent at what it does — asset
+          prices, FX rates, exchange data — but it has no concept of
+          rainfall or weather. HarvestGuard ships its own small,
+          multi-provider weather oracle instead, deliberately built in a
+          familiar, Reflector-like shape for anyone who's integrated with
+          it before.
+        </p>
+      </div>
+      <div class="stat-list">
+        <div class="stat"><span class="stat-num">Median</span><span class="stat-label">of independent providers, not one source</span></div>
+        <div class="stat"><span class="stat-num">~5s</span><span class="stat-label">for a triggered payout to settle</span></div>
+        <div class="stat"><span class="stat-num">&lt;$0.01</span><span class="stat-label">typical cost per reading or payout</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="wrap cta-band-inner">
+      <h2>The pool has no solvency check yet.<br>That's exactly where we need help.</h2>
+      <a href="https://github.com/baobab-labs/harvestguard/blob/main/ISSUES.md" class="cta-primary cta-on-dark">See open issues</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Part of <a href="https://github.com/baobab-labs">Baobab Labs</a> — open-source, built on Stellar. MIT licensed.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
